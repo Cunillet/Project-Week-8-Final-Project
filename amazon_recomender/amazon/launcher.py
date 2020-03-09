@@ -7,4 +7,4 @@ process = CrawlerProcess(settings={
 })
 
 process.crawl(AmazonProductSpider)
-process.start() 
+process.start()

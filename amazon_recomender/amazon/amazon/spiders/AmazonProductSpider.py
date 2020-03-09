@@ -7,9 +7,8 @@ class AmazonProductSpider(scrapy.Spider):
     allowed_domains = ["amazon.com"]
   
     #Use working product URL below
-    start_urls = [
-        "https://www.amazon.es/s?k=samsung+tv"
-        ]
+    ext = input('Searched value: ').replace(' ','+')
+    start_urls = [f'https://www.amazon.es/s?k={ext}']
  
     def parse(self, response):
         items = AmazonItem()

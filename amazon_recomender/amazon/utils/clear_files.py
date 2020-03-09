@@ -1,0 +1,2 @@
+def clear_files():
+    ###
