@@ -3,3 +3,4 @@ tests/
 *.vscode/
 *data/
 *ipynb_checkpoints/
+*DS_Store
