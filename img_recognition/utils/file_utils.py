@@ -29,9 +29,13 @@ def read_paths(path):
 
 def read_paths_2(path):
     elems = {}
+    sz = (150, 150)
+    limit = 0
     for file_name in listdir(path):
         file_path = join(path, file_name)
-        if not isfile(file_path):
+        if limit > 100:
+            break
+        elif not isfile(file_path):
             elems[file_name] = read_paths(file_path)
 
         try:
@@ -39,10 +43,12 @@ def read_paths_2(path):
             img = Image.open(file_path).convert('L')
             name = os.path.basename(path)
             if not name in elems:
-                elems[name] = [gray]
+                elems[name] = [array(img.resize(sz))]
             else:
                 elems[name].append(array(img.resize(sz)))
         except IOError:
             pass
+
+        limit += 1
 
     return elems
