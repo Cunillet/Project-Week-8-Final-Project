@@ -1,9 +1,9 @@
 <img src="https://bit.ly/2VnXWr2" alt="Ironhack Logo" width="100"/>
 
-# Title of My Project
-*[Your Name]*
+# Animals live detector
+*Oriol Cunill Fulquet*
 
-*[Your Cohort, Campus & Date]*
+*Data Analytics, 2020/03/11 - IronHach - Barcelona*
 
 ## Content
 - [Project Description](#project-description)
@@ -19,54 +19,40 @@
 - [Links](#links)
 
 ## Project Description
-Write a short description of your project: 3-5 sentences about what your project is about, why you chose this topic (if relevant), and what you are trying to show.
+Every day we use deep learning algorithms and don't even think about it. Just think about the errors but don't put attention on how good they do it. In this project my only goal is to understand and try to reproduce something that already exists: a classificator of images, in this case, animals.
 
 ## Hypotheses / Questions
-* What data/business/research/personal question you would like to answer?
-* What is the context for the question and the possible scientific or business application?
-* What are the hypotheses you would like to test in order to answer your question?  
-Frame your hypothesis with statistical/data languages (i.e. define Null and Alternative Hypothesis). You can use formulas if you want but that is not required.
+* Is it possible to reproduce an image classificator in one week without knowledge in deep learning?
+* Is there any difference between processing stored images and live cam recognition?
+* Are chosen species determinant for this experiment? Also, more classifications affect the results?
 
 ## Dataset
-* Where did you get your data? If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
-* Did you build your own datset? If so, did you use an API or a web scraper? PRovide the relevant scripts in your repo.
-* For all types of datasets, provide a description of the size, complexity, and data types included in your dataset, as well as a schema of the tables if necessary.
-* If the question cannot be answered with the available data, why not? What data would you need to answer it better?
+* the main dataset is from [Kaggle](https://www.kaggle.com/alessiocorrado99/animals10), a dataset with ten animals, more than 1000 images per animal.
+* After doing this process, I would say that, 1000 images, when trying to classify 10 different animals, is not enough, specialy when some animals have different races.
 
 ## Cleaning
-Describe your full process of data wrangling and cleaning. Document why you chose to fill missing values, extract outliers, or create the variables you did as well as your reasoning behind the process.
-
-## Analysis
-* Overview the general steps you went through to analyze your data in order to test your hypothesis.
-* Document each step of your data exploration and analysis.
-* Include charts to demonstrate the effect of your work.
-* If you used Machine Learning in your final project, describe your feature selection process.
+As long as my data were just images my first thought was I wouldn't need to clean. Truth is I found algorithms not working propperly and that was because there were wrong images or confusing images. This made me clean (at least the worse) images manualy for training and testing.
 
 ## Model Training and Evaluation
-*Include this section only if you chose to include ML in your project.*
-* Describe how you trained your model, the results you obtained, and how you evaluated those results.
+Searched and did fast tests with two deep learning libraries: [Tensorflow](https://www.tensorflow.org/) and [Pytorch](https://pytorch.org/). Decided to go for Tensorflow because found more documentation and seemed to be a bit faster to understand and learn.
+Once the library was chosen, next step is to decide the layers. First tests were done with [Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense). This layer search for a full pattern, this was a mistake because the objective is not tot detect a full image but part of its content. The right layer is one specialised in images or in searching patterns inside a whole. I decided to go for [Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D). This layer is specialised in searching elements in a whole. Another problem to take care of is, images have two dimensions and the output was a list of ten elements so before processing the result [Flatten](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Flatten) was needed.
+When a library is decided and layers are chosen, just one thing is pending; decide how many and how to play with them, parameters, etc.
 
 ## Conclusion
-* Summarize your results. What do they mean?
-* What can you say about your hypotheses?
-* Interpret your findings in terms of the questions you try to answer.
+* Deep learning is harder than thought, there isn't a math calculation to be sure of how many loops, how many layers, how many nodes per layer, etc. You end up figuring out what works better by intuition but can't explain that intuition as well as I would like
+* There is a big difference when processing images stored and with live camera processing. As long as is image processing, my first though was there would be no difference but after working with it, found that some classes that can't be well processed in images are well processed in live and oposite. Also hard to find the balance of well processing each class.
 
 ## Future Work
-Address any questions you were unable to answer, or any next steps or future extensions to your project.
+This project still needs a lot of work. Specially with squirtles, the best saved model has a problem with two animals and still need to improve the live processing.
 
 ## Workflow
-Outline the workflow you used in your project. What were the steps?
-How did you test the accuracy of your analysis and/or machine learning algorithm?
-
-## Organization
-How did you organize your work? Did you use any tools like a trello or kanban board?
-
-What does your repository look like? Explain your folder and file structure.
+1. check different parameters
+2. with correct parameters, check different number of layers and different number of deepness
+3. look for the "best" number of loops for the previos decided points
+4. test with new images
+5. test in live cam
 
 ## Links
-Include links to your repository, slides and trello/kanban board. Feel free to include any other links associated with your project.
-
-
-[Repository](https://github.com/)  
-[Slides](https://slides.com/)  
-[Trello](https://trello.com/en)  
+[Animal live detector](https://github.com/Cunillet/Project-Week-8-Final-Project)
+[Slides](https://docs.google.com/presentation/d/1uO_FQ-t5czcJEXMGsVuMUooYMo7ZAIZRr6pyikVJOC4/edit#slide=id.p)
+[Trello](https://trello.com/en)
