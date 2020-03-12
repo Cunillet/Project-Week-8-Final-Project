@@ -71,7 +71,7 @@ while(True):
     if animal_captured != animal_predicted:
         animal_captured = animal_predicted
         print(animal_captured)
-    cv2.putText(frame, animal_captured, (100,40), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255),2)
+    cv2.putText(frame, animal_captured, (100,150), cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255),2)
     cv2.imshow('my webcam', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break  # esc to quit
